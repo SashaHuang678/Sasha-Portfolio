@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shasha Huang - Product Manager & AI Specialist</title>
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --secondary: #06b6d4;
+            --dark: #1e1b4b;
+            --light: #f5f3ff;
+            --accent: #f43f5e;
+            --text: #334155;
+            --gradient: linear-gradient(135deg, #7c3aed, #06b6d4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Video Banner */
+        .video-banner {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--gradient);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .banner-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #64748b;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .profile-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background-color: #f8f7ff;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .timeline-content .date {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            background-color: #f8f7ff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Updated Project Card Styles for Full-Size Images */
+        .project-img {
+            height: 200px;
+            background-image: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .project-img::after {
+            content: 'View Project';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(124, 58, 237, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .project-card:hover .project-img::after {
+            opacity: 1;
+        }
+
+        .project-card:hover .project-logo {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-content h3 {
+            color: var(--secondary);
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-info, .footer-contact {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .footer-info h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 15px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .footer-contact a {
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright p {
+            opacity: 0.6;
+        }
+
+        /* Additional Styles for Portrait */
+        .portrait-container {
+            margin-bottom: 30px;
+        }
+
+        .portrait-container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: none;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro-text {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        /* Project Card Link Styles - Added to fix underline issue */
+        .projects-grid a {
+            text-decoration: none;
+        }
+
+        .projects-grid a:hover {
+            text-decoration: none;
+        }
+
+        .project-content h3 {
+            text-decoration: none;
+        }
+
+        .project-content h3 a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .project-content h3 a:hover {
+            text-decoration: none;
+            color: var(--secondary);
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column-reverse;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Shasha Huang</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Video Banner -->
+    <div class="video-banner" id="home">
+        <video class="video-background" autoplay muted loop>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="banner-content">
+            <div class="portrait-container">
+                <img src="IMG_0230.jpg" alt="Shasha Huang" class="portrait-img">
+            </div>
+            <h1>Shasha Huang</h1>
+            <div class="intro-text">
+                <p>Hello! I'm a passionate product manager with expertise in AI applications, FinTech and enterprise solutions. Currently pursuing my MS at the University of Washington.</p>
+            </div>
+            <a href="#projects" class="cta-btn">View My Projects</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Product manager with expertise in AI applications and enterprise solutions</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello, I'm Shasha</h3>
+                    <p>I am a product manager with over 5 years of experience in fintech, gaming, and AI industries. Currently pursuing my Master's in Information Systems at the University of Washington's Foster School of Business, I specialize in developing AI-powered products that solve real business problems.</p>
+                    <p>My experience spans from leading enterprise products at HSBC to winning AI competitions at UW. I'm passionate about leveraging technology to create impactful solutions and have a proven track record of reducing costs, improving user experiences, and driving business growth.</p>
+                    <p>With a background in both technical and business domains, I bridge the gap between technology and business strategy, helping organizations achieve their goals through innovative product solutions.</p>
+                </div>
+                <div class="profile-img">
+                    <img src="IMG_0230.jpg" alt="Shasha Huang">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Experience</h2>
+                <p>A timeline of my professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Product Manager Technical</h3>
+                        <span class="date">Aug 2024 - Present</span>
+                        <p><strong>MoonshotAI, Seattle, WA</strong></p>
+                        <p>Leading AI product development for startups and VC firms. Improved AI application accuracy by 20% through prompt engineering and model optimization.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Product Manager</h3>
+                        <span class="date">Aug 2021 - May 2024</span>
+                        <p><strong>HSBC, Guangzhou, China</strong></p>
+                        <p>Led product management for Hong Kong, UK, and Singapore markets. Reduced operation costs by 50% through strategic feature launches and migrated 2 million users to a new platform.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Program Manager</h3>
+                        <span class="date">Mar 2021 - Jun 2021</span>
+                        <p><strong>NetEase Games, Guangzhou, China</strong></p>
+                        <p>Managed 80+ weekly releases of collaboration and enterprise products for 20,000+ internal users.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Product Manager & PMO</h3>
+                        <span class="date">Sep 2018 - Mar 2021</span>
+                        <p><strong>HSBC, Guangzhou, China</strong></p>
+                        <p>Created 4 enterprise products from zero-to-one, reducing management costs by 80%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Founder, Product Manager</h3>
+                        <span class="date">Nov 2017 - Sep 2018</span>
+                        <p><strong>Starswtrip, Guangzhou, China</strong></p>
+                        <p>Established 20+ international programs and expanded social media presence to 5,000+ followers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section with Images -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Highlights from my professional portfolio</p>
+            </div>
+            <div class="projects-grid">
+                <a href="project1.html" class="project-card">
+                    <div class="project-img">
+                        <img src="AI.jpg" alt="MoonshotAI" class="project-logo">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-Powered VC Evaluation Tool</h3>
+                        <p>Led the development of an AI application that helps startups improve business ideas and offers customized evaluation tools for VC firms. Improved accuracy by 20% through prompt engineering.</p>
+                    </div>
+                </a>
+                <a href="project2.html" class="project-card">
+                    <div class="project-img">
+                        <img src="hsbc-logo.jpg" alt="HSBC" class="project-logo">
+                    </div>
+                    <div class="project-content">
+                        <h3>Digital Identity Platform</h3>
+                        <p>Migrated 2 million users to a new platform with enhanced security features including biometric authentication and fraud detection, increasing user base by 15%.</p>
+                    </div>
+                </a>
+                <a href="project3.html" class="project-card">
+                    <div class="project-img">
+                        <img src="enterprise-logo.jpg" alt="Enterprise" class="project-logo">
+                    </div>
+                    <div class="project-content">
+                        <h3>Office Automation System</h3>
+                        <p>Created enterprise solutions including Talent Development and Funding Management Systems, reducing resource costs by 80% through internal startup approach.</p>
+                    </div>
+                </a>
+                <a href="project4.html" class="project-card">
+                    <div class="project-img" style="background-image: linear-gradient(135deg, #ff6b6b, #ff8e53);">
+                        <img src="starswtrip-logo.jpg" alt="Starswtrip" class="project-logo">
+                    </div>
+                    <div class="project-content">
+                        <h3>Startup Experience</h3>
+                        <p>Founded an international education company providing overseas volunteering and study programs. Established 20+ global programs and grew social media to 5,000+ followers in 3 months.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Shasha Huang</h3>
+                    <p>Product Manager & AI Specialist</p>
+                    <p>Currently pursuing MS in Information Systems at the University of Washington</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <ul class="contact-list">
+                        <li>Email: <a href="mailto:Sasha123@uw.edu">Sasha123@uw.edu</a></li>
+                        <li>Phone: <a href="tel:+12065135239">(206) 513-5239</a></li>
+                        <li>LinkedIn: <a href="https://linkedin.com/in/sasha-huang-6625b4312" target="_blank">linkedin.com/in/sasha-huang-6625b4312</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Shasha Huang. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
